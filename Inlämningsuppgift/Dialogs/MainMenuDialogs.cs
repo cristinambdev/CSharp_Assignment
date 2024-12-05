@@ -1,55 +1,49 @@
 ﻿using Business.Factories;
-using Business.Models;
+using Business.Interfaces;
 
 namespace Business.Services;
 
-public class MenuDialogs
+public class MainMenuDialogs(IContactService contactService) : IMainMenuDialogs
 {
-    private readonly ContactService _contactService = new();
+    private readonly IContactService _contactService = contactService;
 
-    public void Run()
+
+    public string ShowMainMenu()
     {
         while (true)
         {
-            MainMenu();
-            
+
+            Console.Clear();
+            Console.WriteLine("WELCOME TO THE PROGRAM!");
+            Console.WriteLine($"{"1.",-5} CREATE CONTACT");
+            Console.WriteLine($"{"2.",-5} SHOW CONTACT");
+            Console.WriteLine($"{"Q.",-5} LEAVE PROGRAM");
+            Console.WriteLine("-----------------------------------");
+            Console.Write("Choose your option: ");
+            var option = Console.ReadLine()!;
+
+            switch (option.ToLower())
+            {
+                case "q":
+                    QuitOption();
+                    break;
+
+                case "1":
+                    CreateOption();
+                    break;
+
+                case "2":
+                    ViewOption();
+                    break;
+
+                default:
+                    InvalidOption();
+                    break;
+            }
         }
     }
 
-    private string MainMenu()
-    {
-        Console.Clear();
-        Console.WriteLine("WELCOME TO THE PROGRAM!");
-        Console.WriteLine($"{"1.",-5} CREATE CONTACT");
-        Console.WriteLine($"{"2.",-5} SHOW CONTACT");
-        Console.WriteLine($"{"Q.",-5} LEAVE PROGRAM");
-        Console.WriteLine("-----------------------------------");
-        Console.Write("Choose your option: ");
-        var option = Console.ReadLine()!;
-
-        switch (option.ToLower())
-        {
-            case "q":
-                QuitOption();
-                break;
-
-            case "1":
-                CreateOption();
-                break;
-
-            case "2":
-                ViewOption();
-                break;
-
-            default:
-                InvalidOption();
-                break;
-        }
-        return option;
-    }
-
-
-    private void CreateOption()
+    public void CreateOption()
     {
         var contactRegistrationForm = ContactFactory.Create();
 
@@ -87,44 +81,30 @@ public class MenuDialogs
             OutputDialog("Contact could not be created");
         }
 
-        
+
 
     }
-    private void ViewOption()
+    public void ViewOption()
     {
         var contacts = _contactService.GetAll();
 
         Console.Clear();
 
-        foreach(var contact in contacts)
+        foreach (var contact in contacts)
         {
-            Console.WriteLine($"{"Id:", -15}{contact.Id}");
+            Console.WriteLine($"{"Id:",-15}{contact.Id}");
             Console.WriteLine($"{"Name:",-15}{contact.FirstName} {contact.LastName}");
             Console.WriteLine($"{"Email:",-15}{contact.Email}");
             Console.WriteLine($"{"Telephone:",-15}{contact.PhoneNumber}");
-            Console.WriteLine($"{"Address:",-15}{contact.Address} , {contact.PostNumber} , {contact.City} ");
+            Console.WriteLine($"{"Address:",-15}{contact.Address}  {contact.PostNumber}  {contact.City} ");
             Console.WriteLine("");
         }
 
         Console.ReadKey();
     }
 
-    private static CheckNumber(string PhoneNumber)
-    {
-        foreach(char c in PhoneNumber)
-        {
-            if (c < 0 || c > 9)
-            {
-            
-              Console.WriteLine("Please, provide a valid number");
-          
-            }
-        }
 
-
-    }
-    
-    private void QuitOption()
+    public void QuitOption()
     {
         Console.Clear();
         Console.Write("Do you want to exit this program? (y/n): ");
@@ -137,19 +117,20 @@ public class MenuDialogs
 
     }
 
-    private void InvalidOption()
+    public void InvalidOption()
     {
         Console.Clear();
-        Console.WriteLine("You must enter a valid option. ");
+        Console.WriteLine("You must enter a valid option.");
         Console.ReadKey();
 
     }
 
-    private void OutputDialog(string message)
+    public void OutputDialog(string message)
     {
         Console.Clear();
         Console.WriteLine(message);
         Console.ReadKey();
     }
+
 
 }

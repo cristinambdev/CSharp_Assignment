@@ -10,9 +10,9 @@ public class ContactFactory
         return new ContactRegistrationForm();
     }
 
-    internal static ContactEntity Create(ContactRegistrationForm form)
+    internal static Contact Create(ContactRegistrationForm form)
     {
-        return new ContactEntity()
+        return new Contact()
         {
             Id = UniqueIdentifierGenerator.GenerateUniqueId(),
             FirstName = form.FirstName,
@@ -25,11 +25,11 @@ public class ContactFactory
         };
     }
 
-    internal static Contact Create(ContactEntity entity)
+    internal static Contact Create(Contact entity)
     { 
         return new Contact()
         {
-            Id =entity.Id,
+            Id = entity.Id,
             FirstName = entity.FirstName,
             LastName = entity.LastName,
             Email = entity.Email,
