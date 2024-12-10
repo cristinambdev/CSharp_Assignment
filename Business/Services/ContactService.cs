@@ -12,11 +12,11 @@ public class ContactService : IContactService
     private List<Contact> _contacts = [];
     private readonly FileService _fileService = new();
 
-    public bool Create(ContactRegistrationForm form)
+    public bool CreateNewContact(ContactRegistrationForm contactRegistrationForm)
     {
         try
         {
-            Contact contact = ContactFactory.Create(form);
+            Contact contact = ContactFactory.Create(contactRegistrationForm);
 
             contact.Id = UniqueIdentifierGenerator.GenerateUniqueId();
 

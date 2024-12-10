@@ -70,7 +70,7 @@ public class MainMenuDialogs(IContactService contactService) : IMainMenuDialogs
         Console.Write("Enter your city: ");
         contactRegistrationForm.City = Console.ReadLine()!;
 
-        bool result = _contactService.Create(contactRegistrationForm);
+        bool result = _contactService.CreateNewContact(contactRegistrationForm);
 
         if (result)
         {
