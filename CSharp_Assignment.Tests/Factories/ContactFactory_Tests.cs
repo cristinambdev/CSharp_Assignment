@@ -11,14 +11,14 @@ public class ContactFactory_Tests
     //Naming convention: ClassName_MethodName_ExpectedResult
     public void ContactFactory_Create_ShouldReturnContactRegistrationForm()
     {
-        //Arrange- preparation, gather variables, classes, mocks, etc that make the function work
+        //Arrange- preparation, gather variables, classes, objects, mocks, etc that make the function work
 
 
-        //Act - Excute this function
+        //Act - Invoke the method we are testing
         ContactRegistrationForm result = ContactFactory.Create();
 
 
-        //Assert - check/test that whatever it is returned in the function, it is what you want.
+        //Assert - check/test that the method behaved as expected.
         Assert.IsType<ContactRegistrationForm>(result);
     }
 

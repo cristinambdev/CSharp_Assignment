@@ -1,5 +1,7 @@
 ﻿using Business.Factories;
 using Business.Interfaces;
+using Business.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Business.Services;
 
@@ -14,7 +16,7 @@ public class MainMenuDialogs(IContactService contactService) : IMainMenuDialogs
         {
 
             Console.Clear();
-            Console.WriteLine("WELCOME TO THE PROGRAM!");
+            Console.WriteLine("##### WELCOME TO THE PROGRAM! #####");
             Console.WriteLine($"{"1.",-5} CREATE CONTACT");
             Console.WriteLine($"{"2.",-5} SHOW CONTACT");
             Console.WriteLine($"{"Q.",-5} LEAVE PROGRAM");
@@ -29,11 +31,11 @@ public class MainMenuDialogs(IContactService contactService) : IMainMenuDialogs
                     break;
 
                 case "1":
-                    CreateOption();
+                    CreateContact();
                     break;
 
                 case "2":
-                    ViewOption();
+                    ViewContacts();
                     break;
 
                 default:
@@ -43,48 +45,50 @@ public class MainMenuDialogs(IContactService contactService) : IMainMenuDialogs
         }
     }
 
-    public void CreateOption()
+    public void CreateContact()
     {
         var contactRegistrationForm = ContactFactory.Create();
 
         Console.Clear();
 
-        Console.Write("Enter your first name: ");
-        contactRegistrationForm.FirstName = Console.ReadLine()!;
-
-        Console.Write("Enter your last name: ");
-        contactRegistrationForm.LastName = Console.ReadLine()!;
-
-        Console.Write("Enter your email: ");
-        contactRegistrationForm.Email = Console.ReadLine()!;
-
-        Console.Write("Enter your phone number: ");
-        contactRegistrationForm.PhoneNumber = Console.ReadLine()!;
-
-        Console.Write("Enter your address: ");
-        contactRegistrationForm.Address = Console.ReadLine()!;
-
-        Console.Write("Enter your post number: ");
-        contactRegistrationForm.PostNumber = Console.ReadLine()!;
-
-        Console.Write("Enter your city: ");
-        contactRegistrationForm.City = Console.ReadLine()!;
+        contactRegistrationForm.FirstName = PromptAndValidate("Enter your first name: ", nameof(contactRegistrationForm.FirstName));
+        contactRegistrationForm.LastName = PromptAndValidate("Enter your last name: ", nameof(contactRegistrationForm.LastName));
+        contactRegistrationForm.Email = PromptAndValidate("Enter your email: ", nameof(contactRegistrationForm.Email));
+        contactRegistrationForm.PhoneNumber = PromptAndValidate("Enter your phone number: ", nameof(contactRegistrationForm.PhoneNumber));
+        contactRegistrationForm.Address = PromptAndValidate("Enter your address: ", nameof(contactRegistrationForm.Address));
+        contactRegistrationForm.PostNumber = PromptAndValidate("Enter your post number: ", nameof(contactRegistrationForm.PostNumber));
+        contactRegistrationForm.City = PromptAndValidate("Enter your city: ", nameof(contactRegistrationForm.City));
 
         bool result = _contactService.CreateNewContact(contactRegistrationForm);
 
         if (result)
         {
-            OutputDialog("Contact was succesfully created");
+            OutputDialog("Contact was succesfully created!");
         }
         else
         {
             OutputDialog("Contact could not be created");
         }
 
-
-
     }
-    public void ViewOption()
+
+    public string PromptAndValidate(string prompt, string propertyName)
+    {
+        while (true)
+        {
+            Console.WriteLine();
+            Console.Write(prompt);
+            var input = Console.ReadLine() ?? string .Empty;
+
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(new ContactRegistrationForm()) { MemberName = propertyName };
+
+            if(Validator.TryValidateProperty(input, context, results))
+                return input;
+            Console.WriteLine($"{results[0].ErrorMessage}. Please Try again");
+        }
+    }
+    public void ViewContacts()
     {
         var contacts = _contactService.GetAll();
 

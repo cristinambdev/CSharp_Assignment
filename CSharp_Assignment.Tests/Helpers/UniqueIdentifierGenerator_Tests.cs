@@ -16,6 +16,6 @@ public class UniqueIdentifierGenerator_Tests
 
         //Assert
         Assert.False(string.IsNullOrEmpty(id));
-        Assert.True(Guid.TryParse(id, out ));
+        Assert.True(Guid.TryParse(id, out _));
     }
 }

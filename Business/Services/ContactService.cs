@@ -10,7 +10,12 @@ namespace Business.Services;
 public class ContactService : IContactService
 {
     private List<Contact> _contacts = [];
-    private readonly FileService _fileService = new();
+    private readonly IFileService _fileService;
+
+    public ContactService(IFileService fileService)
+    {
+        _fileService = fileService;
+    }//suggested by VS because of error in constructor in FileService_Tests
 
     public bool CreateNewContact(ContactRegistrationForm contactRegistrationForm)
     {
