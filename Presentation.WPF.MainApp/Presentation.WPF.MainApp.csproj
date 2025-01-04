@@ -9,7 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
+    <ProjectReference Include="..\CSharp_Assignment.Tests\Presentation.Console.MainApp.Tests.csproj" />
+    <ProjectReference Include="..\Inlämningsuppgift\Presentation.Console.MainApp.csproj" />
   </ItemGroup>
 
 </Project>

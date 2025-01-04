@@ -4,10 +4,42 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentation.WPF.MainApp"
+        
+        
+        xmlns:views="clr-namespace:Presentation.WPF.MainApp.Views"
+        xmlns:viewmodels="clr-namespace:Presentation.WPF.MainApp.ViewModels"
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        WindowStartupLocation="CenterScreen"
+        
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="300">
+    
+    <Grid Margin="15">
+        <ContentControl Content="{Binding CurrentViewModel}">
+
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:ContactListViewModel}">
+                    <views:ContactListView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewmodels:ContactAddViewModel}">
+                    <views:ContactAddView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewmodels:ContactDetailsViewModel}">
+                    <views:ContactDetailsView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type viewmodels:ContactEditViewModel}">
+                    <views:ContactEditView/>
+                </DataTemplate>
+
+            </ContentControl.Resources>
+            
+        </ContentControl>
+
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
