@@ -9,6 +9,7 @@
         xmlns:views="clr-namespace:Presentation.WPF.MainApp.Views"
         xmlns:viewmodels="clr-namespace:Presentation.WPF.MainApp.ViewModels"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+       
         WindowStartupLocation="CenterScreen"
         
         mc:Ignorable="d"

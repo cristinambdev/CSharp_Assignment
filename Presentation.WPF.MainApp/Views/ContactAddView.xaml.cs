@@ -14,8 +14,5 @@ public partial class ContactAddView : UserControl
         InitializeComponent();
     }
 
-    private void InitializeComponent()
-    {
-        throw new NotImplementedException();
-    }
+
 }

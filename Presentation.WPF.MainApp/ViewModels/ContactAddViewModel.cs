@@ -16,6 +16,8 @@ public partial class ContactAddViewModel(IContactService contactService, IServic
 
     [ObservableProperty]
     private ContactRegistrationForm _contact = new();
+    
+   
 
     [RelayCommand]
     private void Save()
@@ -25,11 +27,8 @@ public partial class ContactAddViewModel(IContactService contactService, IServic
         {
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ContactListViewModel>();
-
         }
-
     }
-
 
     [RelayCommand]
     private void Cancel()

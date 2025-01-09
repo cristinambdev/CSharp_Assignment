@@ -21,26 +21,26 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Contacts Details" FontSize="20" FontWeight="Bold" />
 
         <StackPanel Grid.Row="1" Margin="0 15 0 0">
-            <TextBlock Text="FirstName"/>
-            <TextBlock Text="{Binding Contact.FirstName}" Margin="0,5,0,5" Padding="4"/>
+            <TextBlock Text="First Name"/>
+            <TextBox Text="{Binding Contact.FirstName}" Margin="0,5,0,5" Padding="4"/>
 
             <TextBlock Text="Last Name" FontSize="10"/>
-            <TextBlock Text="{Binding Contact.LastName}" Margin="0,5,0,5" Padding="4"/>
+            <TextBox Text="{Binding Contact.LastName}" Margin="0,5,0,5" Padding="4"/>
 
             <TextBlock Text="Email" FontSize="10"/>
-            <TextBlock Text="{Binding Contact.Email}" Margin="0,5,0,5" Padding="4"/>
+            <TextBox Text="{Binding Contact.Email}" Margin="0,5,0,5" Padding="4"/>
 
             <TextBlock Text="PhoneNumber" FontSize="10"/>
-            <TextBlock Text="{Binding Contact.Phone Number}" Margin="0,5,0,5" Padding="4"/>
+            <TextBox Text="{Binding Contact.PhoneNumber}" Margin="0,5,0,5" Padding="4"/>
 
             <TextBlock Text="Address" FontSize="10"/>
-            <TextBlock Text="{Binding Contact.Address}" Margin="0,5,0,5" Padding="4"/>
+            <TextBox Text="{Binding Contact.Address}" Margin="0,5,0,5" Padding="4"/>
 
             <TextBlock Text="PostNumber" FontSize="10"/>
-            <TextBlock Text="{Binding Contact.PostNumber}" Margin="0,5,0,5" Padding="4"/>
+            <TextBox Text="{Binding Contact.PostNumber}" Margin="0,5,0,5" Padding="4"/>
 
             <TextBlock Text="City" FontSize="10"/>
-            <TextBlock Text="{Binding Contact.City}" Margin="0,5,0,0" Padding="4"/>
+            <TextBox Text="{Binding Contact.City}" Margin="0,5,0,0" Padding="4"/>
 
         </StackPanel>
 

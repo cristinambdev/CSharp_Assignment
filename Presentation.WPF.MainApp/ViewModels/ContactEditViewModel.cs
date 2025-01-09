@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Presentation.WPF.MainApp.ViewModels;
 
-public class ContactEditViewModel(IContactService contactService, IServiceProvider serviceProvider) : ObservableObject
+public partial class ContactEditViewModel(IContactService contactService, IServiceProvider serviceProvider) : ObservableObject
 {
     private readonly IServiceProvider _serviceProvider = serviceProvider;
     private readonly IContactService _contactService = contactService;

@@ -10,7 +10,8 @@
              mc:Ignorable="d" 
              Background="White"
              d:DesignHeight="450" d:DesignWidth="300">
-    <Grid>
+    
+    <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -23,8 +24,9 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0" Text="Contacts List" FontSize="20" FontWeight="Bold" />
-            <Button Grid.Column="1" Command="{Binding GoToAddViewCommand}"  Content="X" FontFamily="Segoe MDL2 Assets" Padding="7 0" />
+            <Button Grid.Column="1" Command="{Binding GoToAddViewCommand}"  Content="&#xE710;" FontFamily="Segoe MDL2 Assets" Padding="7 0" />
         </Grid>
+        
         <ListView Grid.Row="1"  ItemsSource ="{Binding Contacts}" Margin="0 20 0 0" HorizontalContentAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate DataType="models:Contact">
@@ -33,6 +35,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
+                        
                         <StackPanel Grid.Column="0">
                             <TextBlock Text="{Binding FirstName }"/>
                             <TextBlock Text="{Binding LastName}" FontSize="10"/>
@@ -42,8 +45,9 @@
                             <TextBlock Text="{Binding PostNumber}" FontSize="10"/>
                             <TextBlock Text="{Binding City}" FontSize="10"/>
                         </StackPanel>
+                        
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
-                            <Button CommandParameter="{Binding .}" Command="{Binding DataContext.GoToContactDetailsViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Padding="7 0" Content="&#xE712;" FontFamily="Segoe MDL2 Assets" Background="Transparent"/>
+                            <Button Content="&#xE712;" CommandParameter="{Binding .}" Command="{Binding DataContext.GoToContactDetailsViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Padding="7 0" FontFamily="Segoe MDL2 Assets" Background="Transparent"/>
                         </StackPanel>
                     </Grid>
                     

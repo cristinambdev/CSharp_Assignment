@@ -19,29 +19,29 @@ public partial class App : Application
         _host = Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
-                services.AddSingleton<IFileService, FileService>();
+                services.AddSingleton<IFileService>(new FileService(AppDomain.CurrentDomain.BaseDirectory, "list.json"));
                 services.AddTransient<IContactService, ContactService>();
             
-                services.AddSingleton<MainViewModel>();
-                services.AddSingleton<MainWindow>();
-
+                
                 services.AddTransient<ContactListViewModel>();
-                services.AddTransient<ContactListView>();
-
                 services.AddTransient<ContactAddViewModel>();
-                services.AddTransient<ContactAddView>();
-
                 services.AddTransient<ContactDetailsViewModel>();
-                services.AddTransient<ContactDetailsView>();
-
                 services.AddTransient<ContactEditViewModel>();
+
+                services.AddTransient<ContactListView>();
+                services.AddTransient<ContactAddView>();
+                services.AddTransient<ContactDetailsView>();
                 services.AddTransient<ContactEditView>();
+
+                services.AddSingleton<MainWindow>();
+                services.AddSingleton<MainViewModel>();
             })
             .Build();
     }
 
     protected override void OnStartup(StartupEventArgs e)
     {
+
         var mainViewModel = _host.Services.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _host.Services.GetRequiredService<ContactListViewModel>();
 

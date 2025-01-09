@@ -9,7 +9,7 @@ public partial class MainViewModel : ObservableObject
 
 
     [ObservableProperty]
-    private ObservableObject _currentViewModel = null!;
+    private ObservableObject _currentViewModel;
 
     public MainViewModel(IServiceProvider serviceProvider)
     {

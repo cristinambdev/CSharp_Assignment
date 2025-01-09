@@ -6,5 +6,6 @@ namespace Business.Interfaces
     {
         bool CreateNewContact(ContactRegistrationForm contactRegistrationForm);
         IEnumerable<Contact> GetAll();
+        bool UpdateContact(Contact contact);
     }
 }

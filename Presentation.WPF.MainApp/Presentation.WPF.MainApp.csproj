@@ -17,8 +17,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
-    <ProjectReference Include="..\CSharp_Assignment.Tests\Presentation.Console.MainApp.Tests.csproj" />
-    <ProjectReference Include="..\Inlämningsuppgift\Presentation.Console.MainApp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+	
+	<ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+	
+	<ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
 
 </Project>

@@ -20,8 +20,8 @@
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Contacts Details" FontSize="20" FontWeight="Bold" />
 
-        <StackPanel Grid.Row="1" Margin="0 15 0 0">
-            <TextBlock Text="FirstName"/>
+        <StackPanel Grid.Row="1" Margin="0 20 0 0">
+            <TextBlock Text="First Name"/>
             <TextBlock Text="{Binding Contact.FirstName}" Margin="0,5,0,5" Padding="4"/>
             
             <TextBlock Text="Last Name" FontSize="10"/>
